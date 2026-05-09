@@ -166,5 +166,33 @@ Write-Host -Object ' dt -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
 #endregion DT
 
+#region Marketplace
+$Host.UI.RawUI.Flushinputbuffer()
+$choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
+    (New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Install DT Marketplace."),
+    (New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Do not install DT Marketplace.")
+)
+$choice = $Host.UI.PromptForChoice('', "`nDo you also want to install DT Marketplace? It will become available within the Spotify client, where you can easily install themes and extensions.", $choices, 0)
+if ($choice -eq 1) {
+  Write-Host -Object 'dt Marketplace installation aborted' -ForegroundColor 'Yellow'
+}
+else {
+  Write-Host -Object 'Applying DT Marketplace...'
+  & dt config custom_apps "marketplace"
+  & dt config inject_css 1 replace_colors 1
+  Write-Host -Object 'Enabling Marketplace placeholder theme...'
+  $marketThemePath = "$dtFolderPath\Themes\marketplace"
+  if (-not (Test-Path -Path $marketThemePath)) { New-Item -ItemType Directory -Force -Path $marketThemePath | Out-Null }
+  $Parameters = @{
+    Uri             = 'https://raw.githubusercontent.com/spicetify/marketplace/main/resources/color.ini'
+    UseBasicParsing = $true
+    OutFile         = "$marketThemePath\color.ini"
+  }
+  Invoke-WebRequest @Parameters
+  & dt config current_theme "marketplace"
+  & dt apply
+  Write-Host -Object 'Marketplace Setup Complete!' -ForegroundColor 'Green'
+}
+#endregion Marketplace
 
 #endregion Main
