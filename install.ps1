@@ -166,6 +166,24 @@ Write-Host -Object ' dt -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
 #endregion DT
 
+#region Spotify Check
+$spotifyPath = "$env:APPDATA\Spotify"
+if (-not (Test-Path -Path $spotifyPath)) {
+  Write-Host -Object "Spotify isn't installed (or you're using the unsupported Windows Store version)." -ForegroundColor 'Yellow'
+  Write-Host -Object 'Downloading and installing the official Spotify compatible client automatically...' -ForegroundColor 'Cyan'
+  $spotifySetup = "$env:TEMP\SpotifySetup.exe"
+  Invoke-WebRequest -Uri "https://download.scdn.co/SpotifySetup.exe" -OutFile $spotifySetup -UseBasicParsing
+  Write-Host -Object 'Running Spotify Setup... downloading actual client. Please wait...' -ForegroundColor 'Cyan'
+  Start-Process -FilePath $spotifySetup -Wait
+  Write-Host -Object 'Waiting for Spotify to finish setting up files (15 seconds)...' -ForegroundColor 'Cyan'
+  Start-Sleep -Seconds 15
+  Write-Host -Object 'Spotify installation process executed!' -ForegroundColor 'Green'
+}
+else {
+  Write-Host -Object 'Spotify is already installed and detected.' -ForegroundColor 'Green'
+}
+#endregion Spotify Check
+
 #region Marketplace
 $Host.UI.RawUI.Flushinputbuffer()
 $choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
