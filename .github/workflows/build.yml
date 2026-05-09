@@ -45,7 +45,7 @@ jobs:
         os: ["linux", "darwin", "windows"]
         arch: ["amd64", "arm64", "386"]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v2')
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: build
 
     steps:
@@ -84,22 +84,9 @@ jobs:
           name: dt-${{ env.TAG }}-${{ matrix.os }}-${{ (matrix.arch == 'amd64' && 'x64') || (matrix.arch == 'arm64' && 'arm64') || 'x32' }}-unsigned
           path: ./dt.exe
 
-      - name: Sign Windows Executable
+      - name: Skip Signing Windows Executable (No Secret Available)
         if: env.IS_WIN == 'true'
-        uses: signpath/github-action-submit-signing-request@v2
-        with:
-          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-          organization-id: ${{ secrets.SIGNPATH_ORG_ID }}
-          project-slug: "cli"
-          signing-policy-slug: "release-signing"
-          github-artifact-id: ${{ steps.upload-artifact-for-signing.outputs.artifact-id }}
-          wait-for-completion: true
-          output-artifact-directory: "./signed"
-
-      - name: Copy Signed Windows Executable
-        if: env.IS_WIN == 'true'
-        run: |
-          cp ./signed/dt.exe ./dt.exe
+        run: echo "Skipped code signing for personal project"
 
       - name: Attest output
         uses: actions/attest-build-provenance@v4
@@ -145,9 +132,5 @@ jobs:
         with:
           url: https://dt-update.itsmeow.dev/dt-update
           method: GET
-      - name: Update Winget package
-        uses: vedantmgoyal9/winget-releaser@main
-        with:
-          identifier: DT.DT
-          installers-regex: '-windows-\w+\.zip$'
-          token: ${{ secrets.DT_WINGET_TOKEN }}
+      - name: Update Winget package (Skipped)
+        run: echo "Skipped winget deploy"
