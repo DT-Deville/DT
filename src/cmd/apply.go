@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/dt/cli/src/apply"
-	backupstatus "github.com/dt/cli/src/status/backup"
-	spotifystatus "github.com/dt/cli/src/status/spotify"
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/apply"
+	backupstatus "github.com/DT-Deville/DT/src/status/backup"
+	spotifystatus "github.com/DT-Deville/DT/src/status/spotify"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 // Apply .

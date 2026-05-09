@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-ini/ini"
 	"github.com/pterm/pterm"
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 // EditColor changes one or multiple colors' values

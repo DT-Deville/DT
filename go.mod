@@ -1,4 +1,4 @@
-module github.com/dt/cli
+module github.com/DT-Deville/DT
 
 go 1.24.2
 

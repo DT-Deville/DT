@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	spotifystatus "github.com/dt/cli/src/status/spotify"
+	spotifystatus "github.com/DT-Deville/DT/src/status/spotify"
 
-	"github.com/dt/cli/src/backup"
-	"github.com/dt/cli/src/preprocess"
-	backupstatus "github.com/dt/cli/src/status/backup"
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/backup"
+	"github.com/DT-Deville/DT/src/preprocess"
+	backupstatus "github.com/DT-Deville/DT/src/status/backup"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 // Backup stores original apps packages, extracts them and preprocesses extracted apps' assets

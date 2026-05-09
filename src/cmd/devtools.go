@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 const offlineBnkDeveloperMarker = "app-developer"

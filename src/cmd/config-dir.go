@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 // ShowConfigDirectory shows config directory in user's default file manager application

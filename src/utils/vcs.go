@@ -13,7 +13,7 @@ type GithubRelease struct {
 }
 
 func FetchLatestTag() (string, error) {
-	res, err := http.Get("https://api.github.com/repos/dt/cli/releases/latest")
+	res, err := http.Get("https://api.github.com/repos/DT-Deville/DT/releases/latest")
 	if err != nil {
 		return "", err
 	}

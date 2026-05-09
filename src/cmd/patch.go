@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 func Patch() {

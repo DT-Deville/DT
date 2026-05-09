@@ -85,7 +85,7 @@ function Get-DT {
     }
     else {
       Write-Host -Object 'Fetching the latest dt version...' -NoNewline
-      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/dt/cli/releases/latest'
+      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/DT-Deville/DT/releases/latest'
       $targetVersion = $latestRelease.tag_name -replace 'v', ''
       Write-Success
     }
@@ -94,7 +94,7 @@ function Get-DT {
   process {
     Write-Host -Object "Downloading dt v$targetVersion..." -NoNewline
     $Parameters = @{
-      Uri            = "https://github.com/dt/cli/releases/download/v$targetVersion/dt-$targetVersion-windows-$architecture.zip"
+      Uri            = "https://github.com/DT-Deville/DT/releases/download/v$targetVersion/dt-$targetVersion-windows-$architecture.zip"
       UseBasicParsin = $true
       OutFile        = $archivePath
     }

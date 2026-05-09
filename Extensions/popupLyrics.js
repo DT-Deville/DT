@@ -283,7 +283,7 @@ function PopupLyrics() {
 
 			const body = await fetch(finalURL, {
 				headers: {
-					"x-user-agent": `dt v${DT.Config.version} (https://github.com/dt/cli)`,
+					"x-user-agent": `dt v${DT.Config.version} (https://github.com/DT-Deville/DT)`,
 				},
 			});
 

@@ -14,10 +14,10 @@ import (
 
 	colorable "github.com/mattn/go-colorable"
 	"github.com/pterm/pterm"
-	"github.com/dt/cli/src/cmd"
-	spotifystatus "github.com/dt/cli/src/status/spotify"
-	"github.com/dt/cli/src/utils"
-	"github.com/dt/cli/src/utils/isAdmin"
+	"github.com/DT-Deville/DT/src/cmd"
+	spotifystatus "github.com/DT-Deville/DT/src/status/spotify"
+	"github.com/DT-Deville/DT/src/utils"
+	"github.com/DT-Deville/DT/src/utils/isAdmin"
 )
 
 var (
@@ -501,7 +501,7 @@ upgrade|update      Update dt to the latest version if an update is available
 -v, --version       Print version number and quit
 
 For config information, run "dt -h config".
-For more information and reporting bugs: https://github.com/dt/cli/`)
+For more information and reporting bugs: https://github.com/DT-Deville/DT/`)
 }
 
 func helpConfig() {

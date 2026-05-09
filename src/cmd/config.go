@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/go-ini/ini"
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 // EditConfig changes one or multiple config value

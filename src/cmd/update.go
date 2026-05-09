@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/dt/cli/src/utils"
+	"github.com/DT-Deville/DT/src/utils"
 )
 
 func Update(currentVersion string) bool {
@@ -25,7 +25,7 @@ func Update(currentVersion string) bool {
 	}
 
 	utils.PrintInfo("Latest release: " + tagName)
-	var assetURL string = "https://github.com/dt/cli/releases/download/v" + tagName + "/dt-" + tagName + "-" + runtime.GOOS + "-"
+	var assetURL string = "https://github.com/DT-Deville/DT/releases/download/v" + tagName + "/dt-" + tagName + "-" + runtime.GOOS + "-"
 	var location string = os.TempDir() + "/dt-" + tagName
 
 	if runtime.GOARCH == "386" && runtime.GOOS == "windows" {
