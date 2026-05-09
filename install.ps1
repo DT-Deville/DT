@@ -208,6 +208,7 @@ else {
   }
   Invoke-WebRequest @Parameters
   & dt config current_theme "marketplace"
+  & dt backup
   & dt apply
   Write-Host -Object 'Marketplace Setup Complete!' -ForegroundColor 'Green'
 }
