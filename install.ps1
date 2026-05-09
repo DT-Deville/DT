@@ -64,38 +64,13 @@ function Get-DT {
   [CmdletBinding()]
   param ()
   begin {
-    if ($env:PROCESSOR_ARCHITECTURE -eq 'AMD64') {
-      $architecture = 'x64'
-    }
-    elseif ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') {
-      $architecture = 'arm64'
-    }
-    else {
-      $architecture = 'x32'
-    }
-    if ($v) {
-      if ($v -match '^\d+\.\d+\.\d+$') {
-        $targetVersion = $v
-      }
-      else {
-        Write-Warning -Message "You have specified an invalid dt version: $v `nThe version must be in the following format: 1.2.3"
-        Pause
-        exit
-      }
-    }
-    else {
-      Write-Host -Object 'Fetching the latest dt version...' -NoNewline
-      $latestRelease = Invoke-RestMethod -Uri 'https://api.github.com/repos/DT-Deville/DT/releases/latest'
-      $targetVersion = $latestRelease.tag_name -replace 'v', ''
-      Write-Success
-    }
     $archivePath = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), "dt.zip")
   }
   process {
-    Write-Host -Object "Downloading dt v$targetVersion..." -NoNewline
+    Write-Host -Object "Downloading dt latest version..." -NoNewline
     $Parameters = @{
-      Uri            = "https://github.com/DT-Deville/DT/releases/download/v$targetVersion/dt-$targetVersion-windows-$architecture.zip"
-      UseBasicParsin = $true
+      Uri            = "https://raw.githubusercontent.com/DT-Deville/DT/main/dt.zip"
+      UseBasicParsing = $true
       OutFile        = $archivePath
     }
     Invoke-WebRequest @Parameters
