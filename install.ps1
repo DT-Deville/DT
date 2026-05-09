@@ -166,23 +166,5 @@ Write-Host -Object ' dt -h ' -NoNewline -ForegroundColor 'Cyan'
 Write-Host -Object 'to get started'
 #endregion DT
 
-#region Marketplace
-$Host.UI.RawUI.Flushinputbuffer()
-$choices = [System.Management.Automation.Host.ChoiceDescription[]] @(
-    (New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Install DT Marketplace."),
-    (New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Do not install DT Marketplace.")
-)
-$choice = $Host.UI.PromptForChoice('', "`nDo you also want to install DT Marketplace? It will become available within the Spotify client, where you can easily install themes and extensions.", $choices, 0)
-if ($choice -eq 1) {
-  Write-Host -Object 'dt Marketplace installation aborted' -ForegroundColor 'Yellow'
-}
-else {
-  Write-Host -Object 'Starting the dt Marketplace installation script..'
-  $Parameters = @{
-    Uri             = 'https://raw.githubusercontent.com/dt/dt-marketplace/main/resources/install.ps1'
-    UseBasicParsing = $true
-  }
-  Invoke-WebRequest @Parameters | Invoke-Expression
-}
-#endregion Marketplace
+
 #endregion Main
